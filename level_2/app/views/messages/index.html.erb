@@ -5,8 +5,12 @@
   <%= f.submit %>
 <% end %>
 
+<%= link_to "Urgent", tags_path("urgent") %>
+<%= link_to "Rigolo", tags_path("rigolo") %>
+<%= link_to "Secret", tags_path("secret") %>
+
 
 <h2>All messages</h2>
 <% @messages.each do |message| %>
-  <%= link_to message_path(message) do %><p><%= message.content %><% end %> - <%= message.user.username %> - <%= message.tag.name %></p>
+  <%= link_to message_path(message) do %><p><%= message.content %><% end %> - <%= message.user.username %> - <%= message.tag.name %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %></p>
 <% end %>
