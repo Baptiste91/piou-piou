@@ -1,3 +1,5 @@
+require_relative "../../../level_1/traduction"
+
 class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
@@ -8,6 +10,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @translated_message = encode(@message.content)
   end
 
   def create
@@ -18,6 +21,11 @@ class MessagesController < ApplicationController
     else
       render :index, status: :unprocessable_entity
     end
+  end
+
+  def messages
+    @tag_name = params[:name]
+    @messages = Message.joins(:tag).where(tags: { name: params[:name].downcase })
   end
 
   private
