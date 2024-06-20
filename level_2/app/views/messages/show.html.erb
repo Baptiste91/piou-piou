@@ -1,7 +1,13 @@
-<h1>Message</h1>
-<p>Content: <%= @message.content %></p>
-<p>Author: <%= @message.user.username %></p>
-<p>Tag: <%= @message.tag.name %></p>
-
-<h1>Message translated to piou piou</h1>
-<p>Content: <pre><%= @translated_message %></pre></p>
+<div class="container">
+  <p><%= @message.user.username %> - <%= @message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= @message.tag.name %>"><%= @message.tag.name %></span></p>
+  <div class="row">
+    <div class="col-6 bg-light">
+      <h3>Human</h3>
+      <%= @message.content %></p>
+    </div>
+    <div class="col-6 bg-dark text-white">
+      <h3>Piou-Piou</h3>
+      <pre style="white-space: pre-wrap;"><%= @translated_message %></pre>
+    </div>
+  </div>
+</div>
