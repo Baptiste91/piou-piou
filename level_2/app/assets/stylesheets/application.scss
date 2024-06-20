@@ -10,3 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: white;
+}
+
+.container {
+  width: 60%;
+}
+
+a {
+  text-decoration: none;
+}

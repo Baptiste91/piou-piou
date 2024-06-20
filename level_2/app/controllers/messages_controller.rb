@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 
   def messages
     @tag_name = params[:name]
-    @messages = Message.joins(:tag).where(tags: { name: params[:name].downcase })
+    @messages = Message.joins(:tag).where(tags: { name: params[:name].downcase }).order(created_at: :desc)
   end
 
   private

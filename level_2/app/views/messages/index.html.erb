@@ -1,16 +1,23 @@
-<h2>Add a new message</h2>
-<%= simple_form_for(@message) do |f| %>
-  <%= f.input :content %>
-  <%= f.association :tag %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div data-controller="reveal">
+    <h4 data-action="click->reveal#revealForm" class="btn btn-dark">Add a new message <i class="fa-solid fa-plus"></i></h4>
+    <div class="d-none" data-reveal-target="form">
+      <%= simple_form_for(@message) do |f| %>
+        <%= f.input :content %>
+        <%= f.association :tag %>
+        <%= f.submit class: "btn btn-outline-dark" %>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to "Urgent", tags_path("urgent") %>
-<%= link_to "Rigolo", tags_path("rigolo") %>
-<%= link_to "Secret", tags_path("secret") %>
-
-
-<h2>All messages</h2>
-<% @messages.each do |message| %>
-  <%= link_to message_path(message) do %><p><%= message.content %><% end %> - <%= message.user.username %> - <%= message.tag.name %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %></p>
-<% end %>
+  <% @messages.each do |message| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <%= link_to message_path(message) do %>
+        <h2><%= message.content %></h2>
+        <% end %>
+        <p><%= message.user.username %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= message.tag.name %>"><%= message.tag.name %></span></p>
+      </div>
+    </div>
+  <% end %>
+</div>
