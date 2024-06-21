@@ -1,13 +1,11 @@
-<div class="container">
-  <h2>All messages for the <%= @tag_name %> tag</h2>
-  <% @messages.each do |message| %>
-    <div class="card-product">
-      <div class="card-product-infos">
-        <%= link_to message_path(message) do %>
-        <h2><%= message.content %></h2>
-        <% end %>
-        <p><%= message.user.username %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= message.tag.name %>"><%= message.tag.name %></span></p>
-      </div>
+<h2>All messages for the <%= @tag_name %> tag</h2>
+<% @messages.each do |message| %>
+  <div class="card-product">
+    <div class="card-product-infos">
+      <%= link_to message_path(message) do %>
+      <h2><%= message.content %></h2>
+      <% end %>
+      <p><%= message.user.username %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= message.tag.name %>"><%= message.tag.name %></span></p>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
