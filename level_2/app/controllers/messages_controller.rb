@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @tags = Tag.all
     @message = Message.new
     @messages = Message.order(created_at: :desc)
+    @messages = Message.joins(:tag).where(tags: { name: params[:tag] }).order(created_at: :desc) if params[:tag].present?
   end
 
   def show
@@ -17,9 +18,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
-    if @message.save!
+    if @message.save
       redirect_to message_path(@message)
     else
+      @messages = Message.order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
   end

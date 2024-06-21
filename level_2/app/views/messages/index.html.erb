@@ -1,28 +1,36 @@
-<div data-controller="reveal">
+<div data-controller="reveal" class="mt-5">
   <h4 data-action="click->reveal#revealForm" class="btn btn-dark">Post a new message <i class="fa-solid fa-plus"></i></h4>
-  <div class="d-none" data-reveal-target="form">
+  <div class="<%= "d-none" if !@message.errors.any? %>" data-reveal-target="form">
     <%= simple_form_for(@message) do |f| %>
       <%= f.input :content %>
-      <%= f.input :tag_id,
-          as: :radio_buttons,
+      <%= f.association :tag, as: :radio_buttons,
           collection_wrapper_tag: 'div',
           collection_wrapper_class: 'category-wrapper',
           item_wrapper_class: 'category-item',
-          input_html: {class: 'category-selector'},
-          collection: @tags,
-          value_method: :id %>
+          input_html: {class: 'category-selector'} %>
       <%= f.submit "Send", class: "btn btn-outline-dark" %>
     <% end %>
   </div>
 </div>
 
-<% @messages.each do |message| %>
-  <div class="card-product">
-    <div class="card-product-infos">
-      <%= link_to message_path(message) do %>
-      <h2><%= message.content %></h2>
-      <% end %>
-      <p><%= message.user.username %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= message.tag.name %>"><%= message.tag.name %></span></p>
+<hr>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "Urgent", messages_path(tag: "urgent"), class:  "btn btn-outline-dark"%>
+  <%= link_to "Secret", messages_path(tag: "secret"), class:  "btn btn-outline-dark"%>
+  <%= link_to "Rigolo", messages_path(tag: "rigolo"), class:  "btn btn-outline-dark"%>
+  <%= link_to "All", messages_path, class:  "btn btn-outline-dark"%>
+</div>
+
+<div class="mt-4">
+  <% @messages.each do |message| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <%= link_to message_path(message) do %>
+        <h2><%= message.content %></h2>
+        <% end %>
+        <p><%= message.user.username %> - <%= message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= message.tag.name %>"><%= message.tag.name %></span></p>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
