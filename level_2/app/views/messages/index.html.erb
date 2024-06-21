@@ -3,11 +3,12 @@
   <div class="<%= "d-none" if !@message.errors.any? %>" data-reveal-target="form">
     <%= simple_form_for(@message) do |f| %>
       <%= f.input :content %>
-      <%= f.association :tag, as: :radio_buttons,
+      <%= f.input :tag, as: :radio_buttons,
           collection_wrapper_tag: 'div',
           collection_wrapper_class: 'category-wrapper',
           item_wrapper_class: 'category-item',
-          input_html: {class: 'category-selector'} %>
+          input_html: {class: 'category-selector'},
+          collection: Tag::TAGS %>
       <%= f.submit "Send", class: "btn btn-outline-dark" %>
     <% end %>
   </div>

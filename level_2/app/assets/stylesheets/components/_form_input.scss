@@ -24,18 +24,18 @@
   color: white !important;
 }
 
-#message_tag_id_4:checked+label {
+#message_tag_urgent:checked+label {
   background-color: rgba(239, 78, 78, 0.56);
   border-color: rgba(239, 78, 78, 0.56);
 }
 
-#message_tag_id_5:checked+label {
+#message_tag_secret:checked+label {
   background-color: rgba(30, 143, 255, 0.532);
   border-color: rgba(30, 143, 255, 0.532);
 }
 
 
-#message_tag_id_6:checked+label {
+#message_tag_rigolo:checked+label {
   background-color: rgba(255, 210, 30, 0.558);
   border-color: rgba(255, 210, 30, 0.558);
 }

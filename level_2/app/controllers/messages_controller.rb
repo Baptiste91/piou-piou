@@ -16,7 +16,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = Message.new(content: message_params[:content])
+    @tag = Tag.find_by(name: message_params[:tag])
+    @message.tag = @tag
     @message.user = current_user
     if @message.save
       redirect_to message_path(@message)
@@ -34,6 +36,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :tag_id)
+    params.require(:message).permit(:content, :tag)
   end
 end
