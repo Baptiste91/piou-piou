@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <p><%= @message.user.username %> - <%= @message.created_at.strftime("Posted at %H:%M, %d/%m/%Y ") %> <span class="card-tag-<%= @message.tag.name %>"><%= @message.tag.name %></span></p>
-  <div class="row">
+  <div class="row" style="height: 70vh;">
     <div class="col-6 bg-light">
       <h3>Human</h3>
       <%= @message.content %></p>

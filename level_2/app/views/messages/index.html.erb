@@ -1,6 +1,6 @@
 <div class="container">
   <div data-controller="reveal">
-    <h4 data-action="click->reveal#revealForm" class="btn btn-dark">Add a new message <i class="fa-solid fa-plus"></i></h4>
+    <h4 data-action="click->reveal#revealForm" class="btn btn-dark">Post a new message <i class="fa-solid fa-plus"></i></h4>
     <div class="d-none" data-reveal-target="form">
       <%= simple_form_for(@message) do |f| %>
         <%= f.input :content %>
@@ -12,7 +12,7 @@
             input_html: {class: 'category-selector'},
             collection: @tags,
             value_method: :id %>
-        <%= f.submit class: "btn btn-outline-dark" %>
+        <%= f.submit "Send", class: "btn btn-outline-dark" %>
       <% end %>
     </div>
   </div>
