@@ -4,7 +4,14 @@
     <div class="d-none" data-reveal-target="form">
       <%= simple_form_for(@message) do |f| %>
         <%= f.input :content %>
-        <%= f.association :tag %>
+        <%= f.input :tag_id,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: @tags,
+            value_method: :id %>
         <%= f.submit class: "btn btn-outline-dark" %>
       <% end %>
     </div>

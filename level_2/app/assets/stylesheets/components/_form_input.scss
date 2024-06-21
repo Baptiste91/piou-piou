@@ -1,0 +1,41 @@
+.category-item {
+  display: inline-block;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector+label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: white;
+  color: #000000;
+  border: 0.5px solid #000000;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.category-selector:checked+label {
+  color: white !important;
+}
+
+#message_tag_id_4:checked+label {
+  background-color: rgba(239, 78, 78, 0.56);
+  border-color: rgba(239, 78, 78, 0.56);
+}
+
+#message_tag_id_5:checked+label {
+  background-color: rgba(30, 143, 255, 0.532);
+  border-color: rgba(30, 143, 255, 0.532);
+}
+
+
+#message_tag_id_6:checked+label {
+  background-color: rgba(255, 210, 30, 0.558);
+  border-color: rgba(255, 210, 30, 0.558);
+}

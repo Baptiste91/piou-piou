@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    @tags = Tag.all
     @message = Message.new
     @messages = Message.order(created_at: :desc)
   end
